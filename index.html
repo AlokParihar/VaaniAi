@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VaaniAI — Citizen Grievance System</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<style>
+    #complaints-section {
+      max-width: 600px;
+      margin: 32px auto;
+      padding: 0 20px;
+    }
+
+    #complaints-section h2 {
+      font-size: 20px;
+      margin-bottom: 16px;
+      color: #1a1a2e;
+    }
+
+    .complaint-item {
+      background: white;
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin-bottom: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .complaint-info p {
+      font-size: 13px;
+      color: #666;
+      margin-top: 4px;
+    }
+
+    .priority-badge {
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .High { background: #fee2e2; color: #ef4444; }
+    .Medium { background: #fef3c7; color: #f59e0b; }
+    .Low { background: #d1fae5; color: #10b981; }
+  </style>
+<body>
+<div class="loading-overlay" id="loadingOverlay">
+  <div class="loading-box">
+    <div class="spinner"></div>
+    <h3>AI Analyzing...</h3>
+    <p>Groq AI is reading your complaint</p>
+  </div>
+</div>
+<header>
+  <div>
+    <h1>🗣️ VaaniAI</h1>
+    <p>AI-Powered Citizen Grievance System</p>
+  </div>
+  <button id="adminBtn" onclick="adminLogin()" style="width:auto;padding:10px 20px;font-size:13px;">
+    🔒 Admin Login
+  </button>
+</header>
+  <main>
+    <div class="form-card">
+      <h2>Submit Your Complaint</h2>
+      <p class="subtitle">Fill the form below — AI will automatically categorize and prioritize your complaint.</p>
+      <input type="text" id="name" placeholder="Your Name" />
+      <input type="text" id="location" placeholder="Location (e.g. Bhopal, Ward 5)" />
+      <textarea id="description" placeholder="Describe your complaint in detail..."></textarea>
+      <button onclick="submitComplaint()">Submit Complaint ➜</button>
+    </div>
+  </main>
+  <section id="dashboard">
+  <h2>📊 Dashboard</h2>
+  <div class="stats-grid">
+    <div class="stat-box">
+      <div class="stat-num" id="total">0</div>
+      <div class="stat-lbl">Total Complaints</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num" id="high">0</div>
+      <div class="stat-lbl">🔴 High Priority</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num" id="medium">0</div>
+      <div class="stat-lbl">🟡 Medium Priority</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num" id="low">0</div>
+      <div class="stat-lbl">🟢 Low Priority</div>
+    </div>
+  </div>
+
+  <div class="cat-grid" id="cat-grid"></div>
+</section>
+ <section id="complaints-section">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+  <h2 style="margin-bottom:0;">📋 All Complaints</h2>
+  <button onclick="exportCSV()" style="width:auto;padding:10px 20px;font-size:13px;">
+    📥 Export to Excel
+  </button>
+</div>
+  <div class="filter-row">
+    <input type="text" id="searchInput" placeholder="🔍 Search by name or location..." autocomplete="off" oninput="filterComplaints()" />
+    <select id="filterCategory" onchange="filterComplaints()">
+      <option value="all">All Categories</option>
+      <option value="Road">Road</option>
+      <option value="Water">Water</option>
+      <option value="Electricity">Electricity</option>
+      <option value="Sanitation">Sanitation</option>
+      <option value="Healthcare">Healthcare</option>
+      <option value="Education">Education</option>
+      <option value="Other">Other</option>
+    </select>
+    <select id="filterPriority" onchange="filterComplaints()">
+      <option value="all">All Priorities</option>
+      <option value="High">High</option>
+      <option value="Medium">Medium</option>
+      <option value="Low">Low</option>
+    </select>
+  </div>
+  <div id="complaints-list"></div>
+</section>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
