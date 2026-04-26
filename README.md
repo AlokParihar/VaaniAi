@@ -22,5 +22,4 @@ A web application that allows citizens to submit complaints which are automatica
 - Netlify (Deployment)
 
 ## 👤 About
-Built by Alok Parihar — 1st Year B.Tech CSE, RGPV University (2029)
-Built in 14 days as preparation for college hackathons and Smart India Hackathon 2025.
+Built by Alok Parihar — 1st Year B.Tech CSE, SISTEC Bhopal(2029)
