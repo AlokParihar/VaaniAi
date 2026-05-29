@@ -3,7 +3,7 @@
 A web application that allows citizens to submit complaints which are automatically categorized and prioritized using Groq AI.
 
 ## 🚀 Live Demo
-[Click here to view live](https://superlative-macaron-c18546.netlify.app/)
+[Click here to view live](https://warm-bienenstitch-db0e65.netlify.app/)
 
 ## ✨ Features
 - 🤖 AI automatically categorizes complaints (Road, Water, Electricity, etc.)
